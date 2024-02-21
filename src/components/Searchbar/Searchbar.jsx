@@ -2,7 +2,7 @@ import { Component } from 'react';
 import css from './Searchbar.module.css';
 import { ImSearch } from 'react-icons/im';
 
-import * as Notify from 'services/Notifications';
+import * as Notify from 'services/notifications';
 
 export default class Searchbar extends Component {
   state = {

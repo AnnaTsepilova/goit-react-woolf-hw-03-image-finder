@@ -5,7 +5,7 @@
 [дивись за посиланням](https://drive.google.com/file/d/1oXCGyiq4uKwW0zzraZLKk4lh3voBlBzZ/view?usp=sharing).
 
 Створи компоненти `<Searchbar>`, `<ImageGallery>`, `<ImageGalleryItem>`,
-`<Loader>`, `<Button>` і `<Modal>`. 
+`<Loader>`, `<Button>` і `<Modal>`.
 
 ### Інструкція Pixabay API
 
