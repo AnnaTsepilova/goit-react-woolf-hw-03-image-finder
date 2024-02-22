@@ -72,7 +72,7 @@ class App extends Component {
       this.setState({ isLoading: false });
     }
 
-    if (this.state.images.length > imagesPerPage) {
+    if (this.state.images.length > imagesPerPage - 1) {
       scroll.scrollToBottom();
     } else {
       scroll.scrollToTop();
@@ -87,6 +87,7 @@ class App extends Component {
     this.setState({
       searchQuery: searchQuery,
       page: page,
+      images: [],
     });
   };
 
