@@ -24,6 +24,7 @@ class App extends Component {
     error: '',
     showModal: false,
     modalImage: {},
+    showLoadMore: false,
   };
 
   componentDidUpdate(_, prevState) {
@@ -44,19 +45,12 @@ class App extends Component {
 
       const response = await getImagesApi(searchQuery, page, imagesPerPage);
 
-      if (searchQuery !== this.state.searchQuery) {
-        this.setState({
-          images: response.hits,
-          isLoading: false,
-          totalImages: response.total,
-        });
-      } else {
-        this.setState(state => ({
-          images: [...state.images, ...response.hits],
-          isLoading: false,
-          totalImages: response.total,
-        }));
-      }
+      this.setState(state => ({
+        images: [...state.images, ...response.hits],
+        isLoading: false,
+        totalImages: response.total,
+        showLoadMore: page < Math.ceil(response.total / imagesPerPage),
+      }));
 
       if (response.hits.length > 0 && response.hits.length < imagesPerPage) {
         Notify.NotificationInfo(Notify.INFO_MESSAGE);
@@ -111,16 +105,20 @@ class App extends Component {
   };
 
   render() {
-    const { images, totalImages, isLoading, showModal, modalImage } =
-      this.state;
+    const {
+      images,
+
+      showLoadMore,
+      isLoading,
+      showModal,
+      modalImage,
+    } = this.state;
     return (
       <Section>
         <Searchbar onSubmit={this.handleFormSubmit} />
         <ImageGalleryList images={images} onModalOpen={this.onModalOpen} />
         {isLoading && <Loader />}
-        {images.length > 0 && images.length < totalImages && !isLoading && (
-          <Button onClick={this.handleOnClickLoadMoreBtn} />
-        )}
+        {showLoadMore && <Button onClick={this.handleOnClickLoadMoreBtn} />}
         {showModal && (
           <Modal onModalClose={this.onModaClose}>
             <img src={modalImage.largeImageURL} alt={modalImage.tags} />
