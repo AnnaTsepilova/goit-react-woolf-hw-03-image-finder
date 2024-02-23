@@ -21,7 +21,7 @@ class App extends Component {
     images: [],
     totalImages: 0,
     isLoading: false,
-    error: null,
+    error: '',
     showModal: false,
     modalImage: {},
   };
@@ -40,7 +40,7 @@ class App extends Component {
     const page = this.state.page;
 
     try {
-      this.setState({ isLoading: true });
+      this.setState({ isLoading: true, error: '' });
 
       const response = await getImagesApi(searchQuery, page, imagesPerPage);
 
