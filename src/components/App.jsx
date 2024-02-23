@@ -80,13 +80,13 @@ class App extends Component {
   };
 
   handleFormSubmit = searchQuery => {
-    let page = this.state.page;
-    if (this.state.searchQuery !== searchQuery) {
-      page = 1;
+    if (this.state.searchQuery === searchQuery) {
+      Notify.NotificationInfo(Notify.ALREADY_SHOWN_MESSAGE);
+      return;
     }
     this.setState({
       searchQuery: searchQuery,
-      page: page,
+      page: 1,
       images: [],
     });
   };
