@@ -105,14 +105,9 @@ class App extends Component {
   };
 
   render() {
-    const {
-      images,
+    const { images, showLoadMore, isLoading, showModal, modalImage } =
+      this.state;
 
-      showLoadMore,
-      isLoading,
-      showModal,
-      modalImage,
-    } = this.state;
     return (
       <Section>
         <Searchbar onSubmit={this.handleFormSubmit} />
