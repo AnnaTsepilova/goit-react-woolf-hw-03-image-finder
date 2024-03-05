@@ -107,3 +107,7 @@ Pixabay API підтримує пагінацію, за замовчування
   </div>
 </div>
 ```
+
+### Фінальний результат
+
+![screencapture](./assets/screencapture.png)
